@@ -1,0 +1,28 @@
+﻿<EditForm Model="HousingType">
+    <DataAnnotationsValidator/>
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h5">Housing Types Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="12" lg="9" Style="height: 600px;">
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            <TitleSelector Label="Name" @bind-Name="HousingType.Name" Required="true" RequiredError="Name is Required!" For="(() => HousingType.Name)"/>
+                            <TextboxBase Label="Description" @bind-Text="HousingType.Description" Required="true" RequiredError="Description is Required!" For="(() => HousingType.Description)"/>
+                            <MudTextField T="int" Label="Size" @bind-Number="HousingType.Size" Required="true" RequiredError="Size is Required!" For="(() => HousingType.Size)"/>
+                            <InputFile id="designFiles" hidden multiple accept=".jpg, .jpeg, .png"/>
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Secondary" StartIcon="@Icons.Filled.CloudUpload">Submit</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>

@@ -1,0 +1,21 @@
+﻿<EditForm Model="@Job" OnValidSubmit="OnSubmit">
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Job Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="6" lg="6">
+                    <TextboxBase Label="Job Title" @bind-Text="Job.JobTitle" Required="true" RequiredError="Job Title is required!" />
+                    <TextboxBase Label="Job Description" @bind-Text="Job.JobDescription" MultiLine="true" />
+                    <TextboxBase Label="Responsibiities" @bind-Text="Job.Responsibilities" MultiLine="true" />
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Secondary">Submit</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>

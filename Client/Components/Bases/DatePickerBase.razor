@@ -1,0 +1,11 @@
+﻿<MudGrid Style="max-height:71px;">
+    <MudItem xs="4" sm="4" md="4" lg="3">
+        <MudText Class="mt-5 mb-0" Typo="Typo.subtitle2" Align="Align.Right">@Label</MudText>
+    </MudItem>
+    <MudItem xs="8" sm="8" md="8" lg="9">
+        <MudDatePicker Class="mb-1" Margin="Margin.None" Style="height:30px;"
+                       @bind-Value="DateValue" Date="@DateValue" DateChanged="(d)=> OnDateValueChanged(d)"
+                       Required="@Required" RequiredError="@RequiredError" DateFormat="@Format"
+                       @bind-Error="@Error" @bind-ErrorText="@ErrorText"/>
+    </MudItem>
+</MudGrid>

@@ -1,0 +1,46 @@
+﻿<EditForm Model="@Employee" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator/>
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Employee Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="3" lg="3">
+                    <ImageInput Label="Photo" @bind-Image="Employee.Photo" />
+                </MudItem>
+                <MudItem xs="12" sm="12" md="12" lg="9" Style="height:600px;">
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            @* <CompanyDropDown Label="Company" @bind-CompanyId="CompanyId" /> *@
+                            <TitleSelector Label="Title" @bind-Title="Employee.Title" Required="true" RequiredError="Title is required!" For="@(() => Employee.Title)"/>
+                            <TextboxBase Label="First Name" @bind-Text="Employee.FirstName" Required="true" RequiredError="First Name is required!" For="@(() => Employee.FirstName)" />
+                            <TextboxBase Label="Last Name" @bind-Text="Employee.LastName" Required="true" RequiredError="Last Name is required!" For="@(() => Employee.LastName)" />
+                            <TextboxBase Label="Email" @bind-Text="Employee.Email" Required="true" RequiredError="Email is required!" For="@(() => Employee.Email)"/>
+                            <PhoneInput @bind-Phone1="Employee.Phone1" @bind-Phone2="Employee.Phone2" 
+                                        Phone1For="() => Employee.Phone1" Phone2For="() => Employee.Phone2"/>
+                            <AddressInput Label="Address" @bind-Street="Employee.Street" @bind-City="Employee.City"
+                                          @bind-PostalCode="Employee.PostalCode" @bind-State="Employee.State" @bind-Country="Employee.Country" />
+                        </MudItem>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            <DatePickerBase Label="Date Of Employment" @bind-DateValue="DateOfEmployment" />
+                            @* <DepartmentDropDown Label="Department" @bind-DepartmentId="Employee.DepartmentId" /> 
+                            <JobDropDown Label="Job" @bind-JobId="Employee.JobId" /> *@
+                            <DatePickerBase Label="Date Of Birth" @bind-DateValue="DateOfBirth" />
+                            <GenderSelector Label="Gender" @bind-Gender="Employee.Gender" For="@(() => Employee.Gender)"/>
+                            <TextboxBase Label="Next of Kin" @bind-Text="Employee.NextOfKin" />
+                            <TextboxBase Label="Email" @bind-Text="Employee.NextOfKinEmail" />
+                            <PhoneInput @bind-Phone1="Employee.NextOfKinPhone1" @bind-Phone2="Employee.NextOfKinPhone2" 
+                                        Phone1For="() => Employee.NextOfKinPhone1" Phone2For="() => Employee.NextOfKinPhone2"/>
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Secondary">Submit</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>

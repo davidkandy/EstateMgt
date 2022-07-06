@@ -1,0 +1,28 @@
+﻿<EditForm Model="HousingUnit">
+    <DataAnnotationsValidator/>
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h5">Housing Units Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="12" lg="9" Style="height: 600px;">
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            <TitleSelector Label="Name" @bind-Name="HousingUnit.Name" Required="true" RequiredError="Name is Required!" For="(() => HousingUnit.Name)"/>
+                            <TextboxBase Label="Description" @bind-Text="HousingUnit.Description" Required="true" RequiredError="Description is Required!" For="(() => HousingUnit.Description)"/>
+                            <TextboxBase Label="Status" @bind-Text="HousingUnit.Status" Required="true" RequiredError="Status is Required!" For="(() => HousingUnit.Status)"/>
+                        </MudItem>
+                        
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            @*<DatePickerBase Label="Hand-Over Date" @bind-DateValue="HousingUnit.HandOverDate" Required="true" RequiredError="Hand-Over Date is Required!"/>*@
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+</EditForm>

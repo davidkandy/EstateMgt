@@ -1,0 +1,50 @@
+﻿<EditForm Model="@Estate" OnValidSubmit="@OnSubmit">
+    <DataAnnotationsValidator/>
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h5">Estate Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="12" lg="9" Style="height: 600px;">
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            <TextboxBase Label="Name" @bind-Text="Estate.Name" Required="true" RequiredError="Name is required!" For="@(() => Estate.Name)" />
+                            <TextboxBase Label="Description" @bind-Text="Estate.Description" Required="true" RequiredError="DescriptionAttribute is Required!" For="@(() => Estate.Description)"/>
+                            <AddressInput Label="Address" @bind-Street="Estate.Street" @bind-City="@Estate.City" @bind-State="Estate.State"/>
+                        </MudItem>
+                        <MudItem xs="12" sm="12" md="6" lg="6">
+                            @*<MudDatePicker Label="yyyy-MM-dd" Editable="true" @bind-Date="StartDate" Mask="@(new DateMask("00-00-0000"))" DateFormat="dd-MM-yyyy" Placeholder="Start Date" />*@
+                            @*<DatePickerBase Label="Start Date" @bind-DateValue="StartDate"/>
+                            <DatePickerBase Label="Date of Completion" @bind-DateValue="DateCompleted"/>*@
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Secondary">Submit</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>
+
+@code{
+@using System.Globalization
+
+    protected object FormatValueAsString(object value)
+    {
+        CultureInfo provider = CultureInfo.InvariantCulture;
+
+        switch (value)
+        {
+            case DateTime dateTimeValue:
+                var r = BindConverter.FormatValue(dateTimeValue, "dd-MM-yyyy", provider);
+                return r;
+            default:
+                return string.Empty;
+        }
+    }
+}

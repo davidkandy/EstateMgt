@@ -1,0 +1,25 @@
+﻿<MudCard Elevation="5">
+    <MudCardContent>
+        <MudTable Items="@Departments" Dense="true">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Building Stages</MudText>
+                <MudSpacer />
+                <MudTextField T="string" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Description</MudTh>
+                <MudTh></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Description">@context.Description</MudTd>
+                <MudTd><MudButton OnClick="()=> OnSelectDepartment(context.Id)" Variant="Variant.Filled" StartIcon="@Icons.Filled.Edit">Edit</MudButton></MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    </MudCardContent>
+</MudCard>

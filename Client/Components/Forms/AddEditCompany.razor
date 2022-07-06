@@ -1,0 +1,28 @@
+﻿<EditForm Model="@Company" OnValidSubmit="OnSubmit">
+    <MudCard Elevation="5">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Company Information</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="6" lg="6">
+                    <ImageInput Label="Logo" @bind-Image="Company.Logo" />
+                    <TextboxBase Label="Company Name" @bind-Text="Company.Name" Required="true" RequiredError="Company Name is required!" />
+                    <TextboxBase Label="Description" @bind-Text="Company.Description" MultiLine="true" />
+                    <AddressInput Label="Address" @bind-Street="Company.Street" @bind-City="Company.City"
+                                  @bind-PostalCode="Company.PostalCode" @bind-State="Company.State" @bind-Country="Company.Country" />
+                </MudItem>
+                <MudItem xs="12" sm="12" md="6" lg="6">
+                    <TextboxBase Label="Email" @bind-Text="Company.Email" />
+                    <PhoneInput Label="Phone" @bind-Phone1="Company.Phone1" @bind-Phone2="Company.Phone2" />
+                    <TextboxBase Label="Website" @bind-Text="Company.Website" />
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Secondary">Submit</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>

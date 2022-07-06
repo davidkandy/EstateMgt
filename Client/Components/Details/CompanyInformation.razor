@@ -1,0 +1,44 @@
+﻿<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <RadzenImage Path="@Company.Logo" Style="width:80px" />
+            <MudText Typo="Typo.h6">@Company.Name</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudIconButton Icon="@Icons.Material.Outlined.Edit" Color="Color.Default" OnClick="EditCompany"/>
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudGrid>
+            <MudItem xs="12" sm="12" md="6" lg="6">
+                <MudText Typo="Typo.subtitle2">Description:</MudText>
+                <MudText Typo="Typo.body2">@Company.Description</MudText>
+                <MudText Typo="Typo.subtitle2">Address:</MudText>
+                <MudText Typo="Typo.body2">@Company.Street</MudText>
+                <MudText Typo="Typo.body2">@Company.City  @Company.PostalCode</MudText>
+                <MudText Typo="Typo.body2">@Company.State  @Company.Country</MudText>
+            </MudItem>
+            <MudItem xs="12" sm="12" md="6" lg="6">
+                <MudText Typo="Typo.subtitle2">Email:</MudText>
+                <MudText Typo="Typo.body2">@Company.Email</MudText>
+                <MudText Typo="Typo.subtitle2">Phone:</MudText>
+                <MudText Typo="Typo.body2">@Company.Phone1  @Company.Phone2</MudText>
+                <MudText Typo="Typo.subtitle2">Website:</MudText>
+                <MudText Typo="Typo.body2">@Company.Website</MudText>
+            </MudItem>
+            @if (HasCompanyDetails)
+            {
+                @foreach (var item in CompanyDetails)
+                {
+                    <MudItem xs="12" sm="12" md="12" lg="12">
+                        <MudText Typo="Typo.subtitle2">@item.Name</MudText>
+                        <MudText Typo="Typo.body2">@item.Description</MudText>
+                    </MudItem>
+                }
+            }
+        </MudGrid>
+</MudCardContent>
+    <MudCardActions>
+        <MudButton Variant="Variant.Text" Color="Color.Primary">Read More</MudButton>
+    </MudCardActions>
+</MudCard>

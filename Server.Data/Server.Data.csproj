@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DbContexts\**" />
+    <Compile Remove="Validation\**" />
+    <EmbeddedResource Remove="DbContexts\**" />
+    <EmbeddedResource Remove="Validation\**" />
+    <None Remove="DbContexts\**" />
+    <None Remove="Validation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\Procurement\" />
+    <Folder Include="Entities\Sales\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+  </ItemGroup>
+
+</Project>

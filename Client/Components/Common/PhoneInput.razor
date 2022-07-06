@@ -1,0 +1,17 @@
+﻿<MudGrid>
+    <MudItem xs="4" sm="4" md="4" lg="3">
+        <MudText Class="mt-5" Typo="Typo.subtitle2" Align="Align.Right">@Label</MudText>
+    </MudItem>
+    <MudItem xs="8" sm="8" md="8" lg="9">
+        <MudGrid>
+            <MudItem xs="6" sm="6" md="6" lg="6">
+                <MudTextField T="string" Placeholder="Phone 1" @bind-Value="@Phone1" Margin="Margin.Dense" TextChanged="@OnPhone1Changed" 
+                              For="Phone1For" @bind-Phone1Error="Phone1Error" @bind-Phone1ErrorText="Phone1ErrorText" />
+            </MudItem>
+            <MudItem xs="6" sm="6" md="6" lg="6">
+                <MudTextField T="string" Placeholder="Phone 2" @bind-Value="@Phone2" Margin="Margin.Dense" TextChanged="@OnPhone2Changed" 
+                              For="Phone2For" @bind-Phone2Error="Phone2Error" @bind-Phone2ErrorText="Phone2ErrorText" />
+            </MudItem>
+        </MudGrid>
+    </MudItem>
+</MudGrid>

@@ -1,0 +1,10 @@
+﻿@typeparam T
+
+<MudSelect @bind-Value="@Value">
+    @{
+        foreach (var item in ValueList)
+        {
+            <MudSelectItem Value="@item.GetType().GetProperty(ValueProperty).GetValue(item)">@item.GetType().GetProperty(DisplayProperty).GetValue(item)</MudSelectItem>
+        }
+    }
+</MudSelect>

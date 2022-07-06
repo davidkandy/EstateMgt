@@ -1,0 +1,10 @@
+﻿<MudGrid>
+    <MudItem xs="4" sm="4" md="4" lg="3">
+        <MudText Class="mt-5" Typo="Typo.subtitle2" Align="Align.Right">@Label</MudText>
+    </MudItem>
+    <MudItem xs="8" sm="8" md="8" lg="9">
+        <MudTextField Class="mt-0" T="string" Placeholder="@Label" @bind-Value="Text" TextChanged="OnTextChanged" Margin="Margin.Dense"
+                      Lines="@Lines" Required="@Required" RequiredError="@RequiredError" For="@For" Immediate="true"
+                      @bind-Error="Error" @bind-ErrorText="ErrorText" @onkeydown="AddLine" Style="font-size: 12px;"/>
+    </MudItem>
+</MudGrid>

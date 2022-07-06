@@ -1,0 +1,29 @@
+﻿<MudCard Elevation="5">
+    <MudCardContent>
+        <MudTable Items="@Jobs" Dense="true">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6" Class="min-vw-100">Jobs</MudText>
+                <MudSpacer />
+                <MudButton OnClick="()=> AddNew()" Variant="Variant.Filled" StartIcon="@Icons.Filled.Add" Color="Color.Primary" Size="Size.Small">Add</MudButton>
+                <MudSpacer />
+                <MudTextField T="string" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Job Title</MudTh>
+                <MudTh>Description</MudTh>
+                <MudTh>Responsibilities</MudTh>
+                <MudTh></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Job Title">@context.JobTitle</MudTd>
+                <MudTd DataLabel="Description">@context.JobDescription</MudTd>
+                <MudTd DataLabel="Responsibilities">@context.Responsibilities</MudTd>
+                <MudTd><MudButton OnClick="()=> Edit(context.Id)" Variant="Variant.Filled" StartIcon="@Icons.Filled.Edit" Color="Color.Tertiary" Size="Size.Small">Edit</MudButton></MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    </MudCardContent>
+</MudCard>

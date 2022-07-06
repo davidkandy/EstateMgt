@@ -1,0 +1,40 @@
+﻿@using Blazored.LocalStorage
+@using Client.Providers
+
+<MudNavMenu>
+    <MudNavLink Href="/" Icon="@Icons.Outlined.Home">Home</MudNavLink>
+    <MudNavGroup Title="Blazor" Icon="@Icons.Filled.BusinessCenter" Expanded="true">
+        <MudNavLink Href="/counter" Icon="@Icons.Filled.Calculate">Counter</MudNavLink>
+        <MudNavLink Href="/fetchdata" Icon="@Icons.Filled.Downloading">Fetch Data</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Href="/newcompany" Icon="@Icons.Filled.AddBusiness" Match="NavLinkMatch.All">Add Company</MudNavLink>
+    <MudNavLink Href="/employees" Icon="@Icons.Filled.PeopleOutline">Employees</MudNavLink>
+    <MudNavLink Href="/departments" Icon="@Icons.Filled.Description">Departments</MudNavLink>
+    <MudNavLink Href="/jobs" Icon="@Icons.Filled.Person">Jobs</MudNavLink>
+    <MudNavGroup Title="Contacts" Icon="@Icons.Outlined.Contacts" Expanded="false">
+        <MudNavLink Href="/contacts" Icon="@Icons.Outlined.People">Contacts</MudNavLink>
+        <MudNavLink Href="/newcontact" Icon="@Icons.Outlined.PersonAdd">Add Contact</MudNavLink>
+        <MudNavLink Href="/organizations" Icon="@Icons.Outlined.Business">Organizations</MudNavLink>
+        <MudNavLink Href="/neworganization" Icon="@Icons.Outlined.AddBusiness">Add Organization</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Title="Estates" Icon="@Icons.Outlined.Landscape" Expanded="false">
+        <MudNavLink Href="/estates" Icon="@Icons.Outlined.OtherHouses">Estates</MudNavLink>
+        <MudNavLink Href="/newestate" Icon="@Icons.Outlined.House">Add Estate</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Title="Settings" Icon="@Icons.Outlined.Settings" Expanded="false">
+        <MudNavLink Href="/users" Icon="@Icons.Outlined.People">Users</MudNavLink>
+        <MudNavLink Href="/security" Icon="@Icons.Outlined.Security">Security</MudNavLink>
+    </MudNavGroup>
+</MudNavMenu>
+
+@code {
+    /* private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    } */
+
+}

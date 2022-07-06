@@ -1,0 +1,13 @@
+﻿<MudGrid Style="max-height:71px;">
+    <MudItem xs="4" sm="4" md="4" lg="3">
+        <MudText Class="mt-5" Typo="Typo.subtitle2" Align="Align.Right">@Label</MudText>
+    </MudItem>
+    <MudItem xs="8" sm="8" md="8" lg="9">
+        <MudAutocomplete Placeholder="Please Enter Title" Dense="true" T="string"
+                   Value="@Title" ValueChanged="(string e) => OnChanged(e)"
+                   Required="@Required" RequiredError="@RequiredError" For="@For"
+                   Error="Error" ErrorText="ErrorText"
+                   SearchFunc="@SearchAsync" Immediate="true" CoerceText="false" CoerceValue="true">
+        </MudAutocomplete>
+    </MudItem>
+</MudGrid>

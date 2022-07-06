@@ -1,0 +1,35 @@
+﻿<MudCard Elevation="5">
+    <MudCardContent>
+        <MudTable Items="@Estates" Dense="true">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Estates</MudText>
+                <MudSpacer/>
+                <MudTextField T="string" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Description</MudTh>
+                <MudTh>Street</MudTh>
+                <MudTh>City</MudTh>
+                <MudTh>State</MudTh>
+                <MudTh>Size</MudTh>
+                <MudTh>Status</MudTh>
+                <MudTh>GeoLocation</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Description">@context.Description</MudTd>
+                <MudTd DataLabel="Street">@context.Street</MudTd>
+                <MudTd DataLabel="City">@context.City</MudTd>
+                <MudTd DataLabel="State">@context.State</MudTd>
+                <MudTd DataLabel="Size">@context.Size</MudTd>
+                <MudTd DataLabel="Status">@context.Status</MudTd>
+                <MudTd DataLabel="GeoLocation">@context.Geolocation</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager/>
+            </PagerContent>
+        </MudTable>
+    </MudCardContent>
+</MudCard>

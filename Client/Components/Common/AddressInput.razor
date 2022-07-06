@@ -1,0 +1,24 @@
+﻿<MudGrid>
+    <MudItem xs="4" sm="4" md="4" lg="3">
+        <MudText Class="mt-5" Typo="Typo.subtitle2" Align="Align.Right">@Label</MudText>
+    </MudItem>
+    <MudItem xs="8" sm="8" md="8" lg="9">
+        <MudTextField T="string" Placeholder="Street" @bind-Value="@Street" Margin="Margin.Dense" TextChanged="StreetChanged" />
+        <MudGrid>
+            <MudItem xs="6">
+                <MudTextField T="string" Placeholder="City" @bind-Value="@City" Margin="Margin.Dense" TextChanged="CityChanged" />
+            </MudItem>
+            <MudItem xs="6">
+                <MudTextField T="string" Placeholder="Postal Code" @bind-Value="@PostalCode" Margin="Margin.Dense" TextChanged="PostalCodeChanged" />
+            </MudItem>
+        </MudGrid>
+        <MudGrid>
+            <MudItem xs="6">
+                <MudTextField T="string" Placeholder="State" @bind-Value="@State" Margin="Margin.Dense" TextChanged="StateChanged" />
+            </MudItem>
+            <MudItem xs="6">
+                <MudTextField T="string" Placeholder="Country" @bind-Value="@Country" Margin="Margin.Dense" TextChanged="CountryChanged" />
+            </MudItem>
+        </MudGrid>
+    </MudItem>
+</MudGrid>

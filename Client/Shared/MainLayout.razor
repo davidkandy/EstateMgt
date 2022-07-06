@@ -1,0 +1,85 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider  />
+
+<MudLayout>
+    <MudAppBar Elevation="4" Style="@appBarColor">
+        <MudText Typo="Typo.h5" Class="ml-3">Estate Development Manager</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+        <UserMenu />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="3" Style="@navMenuColor">
+        
+        <NavMenu />
+        
+    </MudDrawer>
+    <MudMainContent>
+        <MudToolBar DisableGutters="true">
+            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
+        </MudToolBar>
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@code {
+
+    bool _drawerOpen = true;
+    string appBarColor = $"background-color:#4A5C8C";
+    string navMenuColor = $"background-color:{Colors.Grey.Lighten2}";
+
+    MudTheme MRTSoftTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = Colors.Blue.Default,
+            Secondary = Colors.Green.Accent4,
+            AppbarBackground = Colors.Red.Default,
+        },
+
+        LayoutProperties = new LayoutProperties()
+        {
+            DrawerWidthLeft = "260px",
+            DrawerWidthRight = "300px"
+        },
+
+        Typography = new Typography()
+        {
+            Default = new Default()
+            {
+                FontFamily = new[] { "Roboto", "Helvetica", "Arial", "sans-serif" },
+                FontSize = "12px"
+            }
+        }
+    };
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}
+
+@*
+@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+*@
