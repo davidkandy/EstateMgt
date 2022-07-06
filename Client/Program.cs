@@ -25,9 +25,10 @@ builder.Services.AddHttpClient<IEstateServiceClient, EstateServiceClient>()
 builder.Services.AddHttpClient<ICompanyServiceClient, CompanyServiceClient>()
                 .AddPolicyHandler(GetRetryPolicy())
                 .AddPolicyHandler(GetCircuitBreakerPolicy());
+
 builder.Services.AddHttpClient<IContactsServiceClient, ContactsServiceClient>()
-    .AddPolicyHandler(GetRetryPolicy())
-    .AddPolicyHandler(GetCircuitBreakerPolicy());
+                .AddPolicyHandler(GetRetryPolicy())
+                .AddPolicyHandler(GetCircuitBreakerPolicy());
 
 builder.Services.AddMudServices();
 

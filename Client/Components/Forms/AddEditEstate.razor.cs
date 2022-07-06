@@ -47,7 +47,13 @@ namespace Client.Components.Forms
                 else
                 {
                     var estateForCreation = GetEstateForCreation();
+
+                    System.Diagnostics.Debugger.Break();
+
                     var result = await Client.CreateEstate(estateForCreation);
+
+                    System.Diagnostics.Debugger.Break();
+
                     EstateId = result.Id;
                     await GetEstateDetail();
                 }

@@ -57,7 +57,7 @@ namespace Client.Services
         public async Task<EstateDto> CreateEstate(EstateForCreation estate)
         {
             var estateToCreate = JsonConvert.SerializeObject(estate);
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/estates")
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/estates/")
             {
                 Content = new StringContent(estateToCreate)
             };
