@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Server.Migrations
+namespace Server.Migrations.AppDB
 {
-    public partial class InitialMigration : Migration
+    public partial class UpdatedMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

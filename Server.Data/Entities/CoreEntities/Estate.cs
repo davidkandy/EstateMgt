@@ -33,6 +33,8 @@ namespace Shared.Entities
         public string Geolocation { get; set; }
         public int Size { get; set; }
         public string Status { get; set; }
+        public int CompanyId { get; set; }
+        public Company Company {get; set;}
 
         //public DateOnly StartDate { get; set; }
         //public DateOnly DateCompleted { get; set; }

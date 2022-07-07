@@ -17,8 +17,9 @@ namespace Server.Data.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Company>().HasOne(company => company.Name);
-            modelBuilder.Entity<Estate>().HasOne(estate => estate.Name);
+            modelBuilder.Entity<Company>().HasMany(company => company.Estate).WithOne().HasForeignKey(x => x.CompanyId);
+            //modelBuilder.Entity<Company>().HasOne(company => company.Name);
+            //modelBuilder.Entity<Estate>().HasOne(estate => estate.Name);
         }
     }
 }

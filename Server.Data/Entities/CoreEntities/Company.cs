@@ -35,5 +35,6 @@ namespace Shared.Entities
         [Url]
         public string Website { get; set; }
         public string Logo { get; set; }
+        public List<Estate> Estate { get; set; } = new List<Estate>();
     }
 }

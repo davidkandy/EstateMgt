@@ -44,7 +44,6 @@ namespace Server.Data.Controllers
         [HttpPost]
         public async Task<ActionResult<EstateDto>> CreateEstate(EstateForCreation estate)
         {
-            System.Diagnostics.Debugger.Break();
 
             if (estate == null) return UnprocessableEntity();
 
