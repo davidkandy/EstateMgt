@@ -8,10 +8,10 @@ using Server.Data.DbContexts;
 
 #nullable disable
 
-namespace Server.Migrations
+namespace Server.Migrations.EstateDB
 {
     [DbContext(typeof(EstateDBContext))]
-    [Migration("20220707100010_InitialMigration")]
+    [Migration("20220707154950_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,7 +23,7 @@ namespace Client.Services
 
         public async Task<IEnumerable<EstateDto>> GetEstates()
         {
-            var result = await _client.GetAsync("api/estates");
+            var result = await _client.GetAsync("api/estate");
 
             if (!result.IsSuccessStatusCode) return null;
 
@@ -34,7 +34,7 @@ namespace Client.Services
 
         public async Task<EstateDto> GetEstate(Guid id)
         {
-            var result = await _client.GetAsync("api/estates/" + id);
+            var result = await _client.GetAsync("api/estate/" + id);
 
             if (!result.IsSuccessStatusCode) return null;
 
@@ -45,7 +45,7 @@ namespace Client.Services
 
         public async Task<EstateForUpdate> GetEstateForUpdate(Guid id)
         {
-            var result = await _client.GetAsync("api/estates/" + id);
+            var result = await _client.GetAsync("api/estate/" + id);
 
             if (!result.IsSuccessStatusCode) return null;
 
@@ -57,7 +57,7 @@ namespace Client.Services
         public async Task<EstateDto> CreateEstate(EstateForCreation estate)
         {
             var estateToCreate = JsonConvert.SerializeObject(estate);
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/estates/")
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/estate")
             {
                 Content = new StringContent(estateToCreate)
             };
@@ -74,7 +74,7 @@ namespace Client.Services
         public async Task<EstateDto> UpdateEstate(Guid id, EstateForUpdate estate)
         {
             var estateToUpdate = JsonConvert.SerializeObject(estate);
-            var request = new HttpRequestMessage(HttpMethod.Put, "api/estates/" + id)
+            var request = new HttpRequestMessage(HttpMethod.Put, "api/estate/" + id)
             {
                 Content = new StringContent(estateToUpdate)
             };
@@ -90,7 +90,7 @@ namespace Client.Services
 
         public async Task DeleteEstate(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Delete, "api/estates/" + id);
+            var request = new HttpRequestMessage(HttpMethod.Delete, "api/estate/" + id);
 
             var response = await _client.SendAsync(request);
             response.EnsureSuccessStatusCode();

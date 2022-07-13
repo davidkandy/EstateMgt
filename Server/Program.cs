@@ -20,11 +20,14 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader());
 });
 
+builder.Services.AddControllers();
+
+builder.Services.AdminLibrary();
+
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlite("Data Source=./Data/AppDB.db"));
 
 builder.Services.AddDbContext<EstateDBContext>(options => options.UseSqlServer("Data Source=XY0N\\XY0NSQL;User ID=sa;Password=ka1nadaya;Encrypt=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;", b => b.MigrationsAssembly("Server")));
 
-builder.Services.AdminLibrary();
 
 //builder.Services.AddDbContext<EstateDbContext>(options =>
 //    options.UseNpgsql(builder.Configuration.GetConnectionString("EstateDbConnection"), b=> b.MigrationsAssembly("Server")));

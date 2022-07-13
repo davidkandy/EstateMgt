@@ -2,19 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Server.Data.DbContexts;
 
 #nullable disable
 
-namespace Server.Migrations
+namespace Server.Migrations.EstateDB
 {
     [DbContext(typeof(EstateDBContext))]
-    [Migration("20220707120824_UpdatedMigration")]
-    partial class UpdatedMigration
+    partial class EstateDBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");

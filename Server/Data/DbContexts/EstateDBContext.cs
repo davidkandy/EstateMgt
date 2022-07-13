@@ -10,7 +10,7 @@ namespace Server.Data.DbContexts
 {
     public class EstateDBContext : DbContext
     {
-        //public EstateDBContext() : base() { }
+        public EstateDBContext() : base() { }
         public EstateDBContext(DbContextOptions<EstateDBContext> options) : base(options) { }
         public DbSet<Estate> Estates { get; set; }
         public DbSet<Company> Companies { get; set; }

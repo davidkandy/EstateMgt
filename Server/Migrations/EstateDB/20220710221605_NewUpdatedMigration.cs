@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Server.Migrations
+namespace Server.Migrations.EstateDB
 {
-    public partial class UpdatedMigration : Migration
+    public partial class NewUpdatedMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

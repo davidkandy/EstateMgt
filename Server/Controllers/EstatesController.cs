@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Server.Data.Controllers
 {
-    [Route("api/estates")]
+    [Route("api/estate")]
     [ApiController]
     public class EstatesController : Controller
     {
@@ -42,6 +42,7 @@ namespace Server.Data.Controllers
         }
 
         [HttpPost]
+        //[Route("estate/Create")]
         public async Task<ActionResult<EstateDto>> CreateEstate(EstateForCreation estate)
         {
 
@@ -54,11 +55,12 @@ namespace Server.Data.Controllers
                 _repo.Insert(estateEntity);
                 await _repo.Save();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return UnprocessableEntity(e.Message);
+                return UnprocessableEntity();
             }
-            return CreatedAtRoute("GetEstate", new { companyId = estateEntity.Id }, estateEntity);
+            var estateToReturn = _mapper.Map<EstateDto>(estateEntity);
+            return CreatedAtRoute("GetEstate", new { estateId = estateToReturn.Id }, estateToReturn);
         }
 
         [HttpPut("{estateId}")]
