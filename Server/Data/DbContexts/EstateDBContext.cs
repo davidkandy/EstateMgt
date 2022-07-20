@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shared.Entities;
+using Server.Data.CoreEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Server.Data.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Company>().HasMany(company => company.Estate).WithOne().HasForeignKey(x => x.CompanyId);
+            modelBuilder.Entity<Company>().HasMany(company => company.Estate).WithOne().HasForeignKey(x => x.FKCompanyId);
             //modelBuilder.Entity<Company>().HasOne(company => company.Name);
             //modelBuilder.Entity<Estate>().HasOne(estate => estate.Name);
         }

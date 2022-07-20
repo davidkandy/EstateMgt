@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Server.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Entities
+namespace Server.Data.CoreEntities
 {
     public class Estate
     {
@@ -19,22 +21,25 @@ namespace Shared.Entities
         [Required]
         public string? Description { get; set; }
 
-        [Required]
-        public string Street { get; set; }
+        public Address Address { get; set; }
+        //[Required]
+        //public string Street { get; set; }
 
-        [Required]
-        public string City { get; set; }
+        //[Required]
+        //public string City { get; set; }
 
-        public string PostalCode { get; set; }
+        //public string PostalCode { get; set; }
 
-        [Required]
-        public string State { get; set; }
+        //[Required]
+        //public string State { get; set; }
 
-        public string Geolocation { get; set; }
+        //public string Geolocation { get; set; }
         public int Size { get; set; }
         public string Status { get; set; }
-        public int CompanyId { get; set; }
-        public Company Company {get; set;}
+        public int FKCompanyId { get; set; }
+
+        [ForeignKey("FKCompanyId")]
+        public virtual Company Company {get; set;}
 
         //public DateOnly StartDate { get; set; }
         //public DateOnly DateCompleted { get; set; }

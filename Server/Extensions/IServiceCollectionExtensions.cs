@@ -1,11 +1,5 @@
-﻿using Server.Data.Entities.Admin;
+﻿using Microsoft.EntityFrameworkCore;
 using Server.Repository;
-using Shared.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Server.Extensions
 {
@@ -16,6 +10,7 @@ namespace Server.Extensions
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(DbSet<>), typeof(NativeDbSet<>));
 
             return services;
         }

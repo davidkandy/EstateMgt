@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Shared.Entities;
-using Shared.Models.DTOs;
-using Shared.Models.DTOs.Admin;
 
 namespace Server.Data
 {

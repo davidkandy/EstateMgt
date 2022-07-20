@@ -7,6 +7,8 @@ namespace Server.Data.Entities
 {
     public class Address
     {
+        [Required]
+        public int Id { get; set; }
         [MaxLength(50, ErrorMessage = "Maximum of 50 characters allowed.")]
         public string Street { get; set; }
         [MaxLength(20, ErrorMessage = "Maximum of 20 characters allowed.")]

@@ -10,6 +10,23 @@ namespace Server.Migrations.EstateDB
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Address",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Street = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    City = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    PostalCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    State = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    Country = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Companies",
                 columns: table => new
                 {
@@ -40,13 +57,10 @@ namespace Server.Migrations.EstateDB
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Street = table.Column<string>(type: "TEXT", nullable: false),
-                    City = table.Column<string>(type: "TEXT", nullable: false),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: false),
-                    State = table.Column<string>(type: "TEXT", nullable: false),
-                    Geolocation = table.Column<string>(type: "TEXT", nullable: false),
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
                     Size = table.Column<int>(type: "INTEGER", nullable: false),
                     Status = table.Column<string>(type: "TEXT", nullable: false),
+                    FKCompanyId = table.Column<int>(type: "INTEGER", nullable: false),
                     CompanyId = table.Column<int>(type: "INTEGER", nullable: false),
                     CompanyId1 = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -54,18 +68,29 @@ namespace Server.Migrations.EstateDB
                 {
                     table.PrimaryKey("PK_Estates", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Estates_Address_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Address",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Estates_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Estates_Companies_CompanyId1",
-                        column: x => x.CompanyId1,
+                        name: "FK_Estates_Companies_FKCompanyId",
+                        column: x => x.FKCompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Estates_AddressId",
+                table: "Estates",
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Estates_CompanyId",
@@ -73,15 +98,18 @@ namespace Server.Migrations.EstateDB
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Estates_CompanyId1",
+                name: "IX_Estates_FKCompanyId",
                 table: "Estates",
-                column: "CompanyId1");
+                column: "FKCompanyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Estates");
+
+            migrationBuilder.DropTable(
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "Companies");

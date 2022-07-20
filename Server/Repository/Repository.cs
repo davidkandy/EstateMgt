@@ -13,10 +13,10 @@ namespace Server.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private NativeDbSet<T> _dbSet;
+        private DbSet<T> _dbSet;
         private EstateDBContext _dbContext;
 
-        public Repository(NativeDbSet<T> dbSet, EstateDBContext dbContext)
+        public Repository(DbSet<T> dbSet, EstateDBContext dbContext)
         {
             _dbSet = dbSet;
             _dbContext = dbContext;

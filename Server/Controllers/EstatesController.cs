@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Server.Data;
+using Server.Data.CoreEntities;
 using Server.Repository;
-using Shared.Entities;
-using Shared.Models.DTOs;
 using Shared.Models.DTOs.Admin;
-using System.Linq;
 
 namespace Server.Data.Controllers
 {
@@ -55,8 +51,9 @@ namespace Server.Data.Controllers
                 _repo.Insert(estateEntity);
                 await _repo.Save();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine($"{ex.Message} $$$$$$$$$ {ex.InnerException}");
                 return UnprocessableEntity();
             }
             var estateToReturn = _mapper.Map<EstateDto>(estateEntity);
