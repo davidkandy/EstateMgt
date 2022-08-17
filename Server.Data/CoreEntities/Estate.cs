@@ -1,4 +1,5 @@
 ﻿using Server.Data.Entities;
+using Server.Data.Profiles.CustomMappers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,25 +22,28 @@ namespace Server.Data.CoreEntities
         [Required]
         public string? Description { get; set; }
 
-        public Address Address { get; set; }
-        //[Required]
-        //public string Street { get; set; }
+        //public Address Address { get; set; }
+        [Required]
+        public string Street { get; set; }
 
-        //[Required]
-        //public string City { get; set; }
+        [Required]
+        public string City { get; set; }
 
-        //public string PostalCode { get; set; }
+        public string PostalCode { get; set; }
 
-        //[Required]
-        //public string State { get; set; }
+        [Required]
+        public string State { get; set; }
 
-        //public string Geolocation { get; set; }
+        public string Geolocation { get; set; }
         public int Size { get; set; }
         public string Status { get; set; }
         public int FKCompanyId { get; set; }
 
+        /*
+         * I had to change this from Company, to string 
+         * */
         [ForeignKey("FKCompanyId")]
-        public virtual Company Company {get; set;}
+        public string Company {get; set;}
 
         //public DateOnly StartDate { get; set; }
         //public DateOnly DateCompleted { get; set; }

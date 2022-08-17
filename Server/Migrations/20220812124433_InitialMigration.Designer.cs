@@ -11,13 +11,13 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20220718121432_InitialMigration")]
+    [Migration("20220812124433_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.7");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

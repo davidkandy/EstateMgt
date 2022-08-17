@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using Server.Data;
 using Server.Data.DbContexts;
 using Server.Extensions;
-using Shared.Models.DTOs.Admin;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,10 +24,12 @@ builder.Services.AddControllers();
 
 builder.Services.AdminLibrary();
 
+var connectionString = builder.Configuration.GetConnectionString("EstateDbConnection");
+var poolSize = builder.Configuration.GetConnectionString("PoolSize");
+
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDbContext<EstateDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EstateDbConnection"), b => b.MigrationsAssembly("Server")));
-
+builder.Services.AddDbContext<EstateDBContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Server")));
 
 //builder.Services.AddDbContext<EstateDbContext>(options =>
 //    options.UseNpgsql(builder.Configuration.GetConnectionString("EstateDbConnection"), b=> b.MigrationsAssembly("Server")));
@@ -58,9 +60,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
-
-// TODO: Create Profiles for the AutoMapper
-//builder.Services.AddAutoMapper(typeof(EstateForUpdate));
 
 var app = builder.Build();
 

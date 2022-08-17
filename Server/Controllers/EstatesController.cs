@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Server.Data.CoreEntities;
+using Server.Data.Profiles.CustomMappers;
 using Server.Repository;
 using Shared.Models.DTOs.Admin;
 
@@ -44,7 +45,7 @@ namespace Server.Data.Controllers
 
             if (estate == null) return UnprocessableEntity();
 
-            var estateEntity = _mapper.Map<Estate>(estate);
+            var estateEntity = estate.ToEstate();
 
             try
             {
@@ -53,7 +54,7 @@ namespace Server.Data.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{ex.Message} $$$$$$$$$ {ex.InnerException}");
+                Console.WriteLine($"{ex.Message} ---- {ex.InnerException}");
                 return UnprocessableEntity();
             }
             var estateToReturn = _mapper.Map<EstateDto>(estateEntity);
