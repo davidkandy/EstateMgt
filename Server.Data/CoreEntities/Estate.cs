@@ -22,17 +22,17 @@ namespace Server.Data.CoreEntities
         [Required]
         public string? Description { get; set; }
 
-        //public Address Address { get; set; }
+        public Address Address { get; set; }
         [Required]
-        public string Street { get; set; }
+        //public string Street { get; set; }
 
-        [Required]
-        public string City { get; set; }
+        //[Required]
+        //public string City { get; set; }
 
-        public string PostalCode { get; set; }
+        //public string PostalCode { get; set; }
 
-        [Required]
-        public string State { get; set; }
+        //[Required]
+        //public string State { get; set; }
 
         public string Geolocation { get; set; }
         public int Size { get; set; }

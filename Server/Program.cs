@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using Server.Data;
 using Server.Data.DbContexts;
+using Server.Data.Profiles;
 using Server.Extensions;
 using System.Text;
 
@@ -21,6 +22,10 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddAutoMapper(typeof(EstateProfile));
 
 builder.Services.AdminLibrary();
 
