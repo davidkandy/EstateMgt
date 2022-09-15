@@ -14,11 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-        builder =>
-        builder
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+        builder => builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
 builder.Services.AddControllers();
@@ -29,8 +27,7 @@ builder.Services.AddAutoMapper(typeof(EstateProfile));
 
 builder.Services.AdminLibrary();
 
-var connectionString = builder.Configuration.GetConnectionString("EstateDbConnection");
-var poolSize = builder.Configuration.GetConnectionString("PoolSize");
+var connectionString = builder.Configuration.GetConnectionString("EstateConnection");
 
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 

@@ -11,7 +11,7 @@ using Server.Data.DbContexts;
 namespace Server.Migrations.EstateDB
 {
     [DbContext(typeof(EstateDBContext))]
-    [Migration("20220831095446_InitialMigration")]
+    [Migration("20220909125748_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,6 +94,9 @@ namespace Server.Migrations.EstateDB
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -121,7 +124,7 @@ namespace Server.Migrations.EstateDB
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("FKCompanyId");
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Estates");
                 });
@@ -162,6 +165,72 @@ namespace Server.Migrations.EstateDB
                     b.ToTable("Address");
                 });
 
+            modelBuilder.Entity("Shared.Models.DTOs.Admin.EstateDto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Geolocation")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Size")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EstateDto");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cfb88e29-4744-48c0-94fa-b25b92dea314"),
+                            City = "Abuja",
+                            Country = "",
+                            Description = "",
+                            Geolocation = "",
+                            Name = "xY0n",
+                            PostalCode = "",
+                            Size = 100,
+                            State = "",
+                            Status = "",
+                            Street = ""
+                        });
+                });
+
             modelBuilder.Entity("Server.Data.CoreEntities.Estate", b =>
                 {
                     b.HasOne("Server.Data.Entities.Address", "Address")
@@ -172,9 +241,7 @@ namespace Server.Migrations.EstateDB
 
                     b.HasOne("Server.Data.CoreEntities.Company", null)
                         .WithMany("Estate")
-                        .HasForeignKey("FKCompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Address");
                 });

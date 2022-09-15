@@ -45,9 +45,8 @@ namespace Server.Data.Controllers
 
             if (estate == null) return UnprocessableEntity();
 
-            //var estateEntity = estate.ToEstate();
-
             var estateEntity = _mapper.Map<Estate>(estate);
+
             try
             {
                 _repo.Insert(estateEntity);
@@ -55,7 +54,6 @@ namespace Server.Data.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{ex.Message} ---- {ex.InnerException}");
                 return UnprocessableEntity();
             }
             var estateToReturn = _mapper.Map<EstateDto>(estateEntity);
